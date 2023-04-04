@@ -1,0 +1,24 @@
+Presumptions:
+ 
+- In the soluton I presumed, that the minimal time interval is one minute
+(the minimum that could be still manageable with the "hh:mm" format).
+
+- I also presumed, that in case of reading the input information from a file,
+the formating of the information will be strictly as shown in the example.
+
+
+Solution:
+
+The basic idea was, converting the input information into a more manageable form,
+like the minutes of the day (thus having the one minute minimal interval),
+interpreting each minute as az index of a 1440 long list (initialised with zeros),
+where a zero means an available minute for both people (from now mentioned as minute-index).
+
+After converting the input information to minute-indexes (ex 9:01 => 541)
+I incremented every value of every minute-index that is not available (booked, or not in range of the calendar),
+for both calendars, and this way I got a list, of 1440 values 0,1 or 2 , where 0 means available, 1 means unavailable to one person
+and 2 means unavailable to both. 
+
+The list product can be processed, by finding in it all the sequences of value 0, thet are longer, than the minimal meeting time.
+The start and end points of theese sequences are converted back to time format, and appended to a list, which
+gets primted, on the console, and in an output.txt file
